@@ -2,9 +2,9 @@
 
 An unofficial interactive map of planned electricity interruptions in Almaty for **13–17 July 2026**.
 
-**Live map:** [blue-dream-6827.fdas201290.workers.dev](https://blue-dream-6827.fdas201290.workers.dev/)
+**Live map:** [power-outage-plan.fdas201290.workers.dev](https://power-outage-plan.fdas201290.workers.dev/)
 
-[![Static preview of the mapped outage blocks](docs/preview.png)](https://blue-dream-6827.fdas201290.workers.dev/)
+[![Static preview of the mapped outage blocks](docs/preview.png)](https://power-outage-plan.fdas201290.workers.dev/)
 
 ## What the project does
 
