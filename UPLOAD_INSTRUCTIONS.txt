@@ -1,0 +1,15 @@
+GITHUB WEB UPLOAD
+
+1. Create a public repository named: almaty-planned-outages-map
+2. Extract this ZIP locally.
+3. In the empty repository, choose Add file -> Upload files.
+4. Upload all extracted files and folders from the ZIP root.
+5. Commit with: Initial public release
+6. Add this website URL in the repository About section:
+   https://blue-dream-6827.fdas201290.workers.dev/
+7. Add topics: gis, leaflet, openstreetmap, almaty, kazakhstan,
+   urban-data, public-information, data-visualization
+8. Pin the repository on your profile.
+
+The repository root is also deployable as a static site because index.html is
+at the root. No build step is required for deployment.
