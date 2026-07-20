@@ -2,26 +2,31 @@
 
 ## Purpose
 
-The source publication is an address-based schedule of planned electricity interruptions. It does not provide official network polygons, feeder service areas, transformer catchments, or machine-readable spatial data. The map therefore translates textual address information into an approximate, navigable spatial representation.
+The project is a common map for planned interruptions of electricity, water, gas and district heating in Almaty. Each provider-specific notice is normalized into the same spatial-temporal event model. The current release populates only the electricity layer using the АЖК schedule for 20–27 July 2026.
 
-## Processing logic
+## Source processing
 
-1. Consolidate the published schedule into one record per outage entry.
-2. Normalize street names, address ranges, neighbourhood names, and common Russian/Kazakh spelling variants.
-3. Search an OpenStreetMap-derived address and building cache across Almaty rather than relying on manually assigned neighbourhood centres.
-4. Use matched address buildings as location evidence only.
-5. Group nearby evidence and derive morphological urban-block envelopes from the surrounding built form.
-6. Store the resulting block polygons with the original outage record and a confidence classification.
-7. Publish the layer as GeoJSON and embed it in a standalone Leaflet interface with chronological filtering.
+1. Extract one record for each published interruption entry.
+2. Normalize dates, times, provider divisions, equipment, work type and raw location text.
+3. Normalize street names, address ranges, neighbourhood names and common Russian/Kazakh spelling variants.
+4. Match address evidence against an OpenStreetMap-derived Almaty address and building cache.
+5. Use matched buildings only as location seeds.
+6. Derive approximate morphological urban-block envelopes from the surrounding built form.
+7. Store each source entry as one event feature, using `Polygon` or `MultiPolygon` geometry and a component-polygon count.
+8. Simplify and coordinate-round the geometry for lightweight browser delivery.
+
+The interface assigns a permanent colour to each utility type. The selected date controls visibility rather than colour. Water, gas and heating already exist as empty interface layers and can later be populated through additional source adapters.
 
 ## Confidence classes
 
-- **High:** the address evidence and selected block geometry are strongly supported.
-- **Medium:** the general location is supported, but the exact set of affected blocks remains interpretive.
-- **Low:** the source address is vague, incomplete, unmatched, or requires a neighbourhood-centre fallback. These polygons are displayed with dashed boundaries and reduced opacity.
+- **High:** address evidence and the selected block geometry are strongly supported.
+- **Medium:** the general location is supported, but the precise set of affected blocks remains interpretive.
+- **Low:** the source description is vague, incomplete, unmatched or requires a neighbourhood-level fallback. Low-confidence geometry is displayed with a dashed boundary and reduced opacity.
 
-## Important limitation
+## Important limitations
 
-The polygons are analytical approximations. They are not official outage boundaries and do not represent the topology of the electricity distribution network. A single listed address range may be served by multiple network elements, while a network interruption may affect only part of a mapped block.
+The source schedule does not contain official network polygons, feeder service areas, transformer catchments or machine-readable spatial boundaries. The displayed geometry is therefore an analytical interpretation of address text.
 
-Users should verify the listed address and time against the original AЖК publication before relying on the map.
+A listed address range may span several service areas, while an interruption may affect only part of a mapped block. Users should verify the exact address and time against the original provider publication before relying on the map.
+
+Future roadworks can use the same event model, but they should normally be represented as street-line geometry rather than artificial block polygons.
