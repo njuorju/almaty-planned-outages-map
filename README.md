@@ -42,24 +42,20 @@ This allows later water, gas and heating records to enter the same interface wit
 
 АЖК publishes an address-based schedule without official outage-area geometry. Street names, address ranges and neighbourhood names were normalized and matched against OpenStreetMap-derived address evidence. Address-tagged buildings were used only as location seeds; the displayed features are approximate morphological block envelopes, not building footprints or electrical-network service areas.
 
-The full methodology and confidence rules are documented in [`docs/methodology.md`](docs/methodology.md). Record-level matching evidence is available in [`data/matching_audit.csv`](data/matching_audit.csv).
+The full methodology and confidence rules are documented in [`docs/methodology.md`](docs/methodology.md).
 
 ## Repository contents
 
 ```text
 .
-├── index.html                    # standalone deployable map
+├── index.html                    # deployable map
 ├── data/
-│   ├── utility_events.geojson.gz.b64 # compressed static GeoJSON payload
-│   ├── utility_events.csv        # one row per source event
-│   └── matching_audit.csv        # record-level spatial audit
+│   └── utility_events.part00…02  # compressed GeoJSON payload
 ├── docs/
 │   ├── methodology.md
 │   └── qa-report.md
 ├── scripts/
-│   ├── build_site.py
 │   └── validate_data.py
-├── site/index.template.html
 ├── ATTRIBUTION.md
 ├── DATA_LICENSE.md
 └── LICENSE
@@ -67,11 +63,10 @@ The full methodology and confidence rules are documented in [`docs/methodology.m
 
 ## Rebuild and validate
 
-Python 3.10 or newer is sufficient for the published static-site build:
+Validate and preview the static site with Python 3.10 or newer:
 
 ```bash
 python scripts/validate_data.py
-python scripts/build_site.py
 python -m http.server 8000
 ```
 
