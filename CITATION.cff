@@ -1,12 +1,12 @@
 cff-version: 1.2.0
 message: "If you use this project, please cite it as below."
-title: "Almaty Planned Electricity Outages Map"
+title: "Almaty Planned Utility Outages Map"
 type: software
 authors:
   - family-names: Nikolaev
     given-names: Nikolay
 repository-code: "https://github.com/njuorju/almaty-planned-outages-map"
-url: "https://blue-dream-6827.fdas201290.workers.dev/"
+url: "https://power-outage-plan.fdas201290.workers.dev/"
 license: MIT
-version: 1.0.0
-date-released: 2026-07-13
+version: 2.0.0
+date-released: 2026-07-20
